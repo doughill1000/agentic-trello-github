@@ -1,0 +1,51 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# macOS/Linux/Windows system files
+.DS_Store
+Thumbs.db
+
+# Uvicorn reload files
+*.pid
+
+# Python egg and distribution info
+*.egg-info/
+dist/
+build/
+
+# Test artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ngrok files (if used locally)
+ngrok.log
+.ngrok.*
+
+# Docker files
+*.container
+*.tar
+
+# VSCode test DB
+test.db
