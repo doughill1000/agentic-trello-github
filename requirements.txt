@@ -4,3 +4,4 @@ openai
 requests
 crewai
 python-dotenv
+pydantic

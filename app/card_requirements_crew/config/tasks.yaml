@@ -1,0 +1,43 @@
+# project_planner_task:
+#   description: >
+#     Create a development plan to have coordinate the other agents into creating the acceptance criteria, test cases, and story description
+#     Ask the product_owner for the aceptance criteria and story descrition.
+#     Ask the tester for the test cases.
+#     Once this information has been gathered, give it to the card_writer to update the trello card
+#     After receiving a status update from the card_writer, terminate whether the task was successful or not
+    
+#     Card title: {title}
+#     Description: {description}
+#     Card_id: {card_id}
+#   expected_output: >
+#     A high-level outline to make updates to the trello ticket. Does not include any actual acceptance criteria or test cases
+#   agent: project_planner
+
+ac_task:
+  description: >
+    Generate a story description and comprehensive acceptance criteria using card title: {title}
+  expected_output: >
+    Well-formed list of acceptance criteria and a story description that gives a business use case for completing this story
+  agent: product_owner
+  # context:
+  #   - project_planner_task
+
+test_task:
+  description: >
+    Generate comprehensive test cases using card title: {title}
+  expected_output: >
+    List of test cases that you created
+  agent: tester
+  context:
+    - ac_task
+
+card_task:
+  description: >
+    Request the acceptance criteria and story description from the product_owner, request the test cases from the tester. DO NOT create them yourself, your job is only to use the
+    output from other agents and to update the trello card
+    Update Trello card with card id {card_id}, story description, test cases, and acceptance criteria.
+  expected_output: Trello card updated with story description, test cases and acceptance criteria received from other agents.
+  agent: card_writer
+  context:
+    - test_task
+    - ac_task
